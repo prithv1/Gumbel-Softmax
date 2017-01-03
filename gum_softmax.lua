@@ -45,7 +45,6 @@ function GumSoftmax:updateGradInput(input, gradOutput)
 	local logits = (sample_gumbel(input:size(), self.eps) + input) / self.temp
 	local softmax_module = nn.Sequential()
 	softmax_module:add(nn.Identity()):add(nn.SoftMax())
-	local output = softmax_module:forward(logits)
 	self.gradInput = softmax_module:backward(logits, gradOutput)
 	self.gradInput = self.gradInput / self.temp
 	return self.gradInput
