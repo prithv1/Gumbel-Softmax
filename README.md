@@ -5,9 +5,9 @@ categorical samples, and whose parameter gradients can be easily computed via th
 ## Papers
 [Categorical Reparameterization with Gumbel-Softmax](https://arxiv.org/pdf/1611.01144v2.pdf)
 ## Usage
-Do the following :
-`require 'gum_softmax.lua'`
-`require 'nn'`
-`model = nn.Sequential()`
-`temperature = 1e-5`
-`model:add(nn.GumSoftMax(temperature))`
+Do the following :  
+`require 'gum_softmax.lua'`  
+`require 'nn'`  
+`model = nn.Sequential()`  
+`temperature = 1e-5`  
+`model:add(nn.GumSoftMax(temperature))`  
