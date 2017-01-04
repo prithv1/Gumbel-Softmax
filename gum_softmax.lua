@@ -4,8 +4,7 @@
 -- Copyright (C) 2016 prithv1 <prithv1@vt.edu>
 --
 -- Distributed under terms of the MIT license.
--- Add an nn.Log() layer before using this module
-
+-- Use nn.Log() before this module
 
 require 'nn'	
 require 'torch'
@@ -31,7 +30,7 @@ end
 function GumSoftmax:updateOutput(input)
 	local input_size = input:size()
 	self.gum_sample = sample_gumbel(input_size, self.eps)
-	self.logits = (self.gum_sample + input) / self.temp
+	self.gum_logits = (self.gum_sample + input) / self.temp
 	self.softmax_module = nn.Sequential()
 	self.softmax_module:add(nn.Identity()):add(nn.SoftMax())
 	self.output = self.softmax_module:forward(self.logits)
